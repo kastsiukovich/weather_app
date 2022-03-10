@@ -56,10 +56,14 @@ const renderWeatherApp1 = async () => {
     const currentPlace = document.querySelector('#place').value.trim();
     const data = await getWeatherInfoFiveDays(currentPlace);
     const listElements = document.querySelector('.collection');
+    listElements.innerHTML = ` <li class="collection-header">
+    <h4>5 Day / 3 Hour Forecast</h4>
+</li>`;
     for (let i in data.list) {
+
         listElements.innerHTML += `<li class="collection-item">
-        <div>${data.list[i].dt_txt} AM<a href="#!" class="secondary-content"><i class="material-icons">${Math.round(data.list[i].main.temp - 273.15)} degrees</i></a></div>
-    </li>`
+            <div>${data.list[i].dt_txt} AM<a href="#!" class="secondary-content"><i class="material-icons">${Math.round(data.list[i].main.temp - 273.15)} degrees</i></a></div>
+        </li>`
     }
 }
 
